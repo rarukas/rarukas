@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo dir1
+echo test2

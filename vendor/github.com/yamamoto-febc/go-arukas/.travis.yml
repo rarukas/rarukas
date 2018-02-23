@@ -1,0 +1,9 @@
+language: go
+go: 1.9.4
+
+install:
+  - make tools
+  - dep init
+
+script:
+  - make test
