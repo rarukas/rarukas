@@ -76,14 +76,14 @@ var cliFlags = []cli.Flag{
 	},
 	&cli.StringFlag{
 		Name:        "arukas-name",
-		Aliases: []string{"name"},
+		Aliases:     []string{"name"},
 		Usage:       "Name of Arukas app",
 		EnvVars:     []string{"ARUKAS_NAME"},
-		Value:       "rarukas-server",
+		Value:       "rarukas",
 		Destination: &cfg.arukasName,
 	},
 	&cli.StringFlag{
-		Name: "arukas-plan",
+		Name:    "arukas-plan",
 		Aliases: []string{"plan"},
 		Usage: fmt.Sprintf("Plan of Arukas app [%s]",
 			strings.Join(arukas.ValidPlans, "/"),

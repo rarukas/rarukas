@@ -37,7 +37,7 @@ install:
 	go install
 
 .PHONY: build-release
-release-build: clean build-all build-server
+build-release: clean build-all build-server
 
 .PHONY: build
 build: bin/rarukas
