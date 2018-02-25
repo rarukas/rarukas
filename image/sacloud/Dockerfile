@@ -2,18 +2,16 @@ FROM golang:1.10 AS builder
 MAINTAINER Kazumichi Yamamoto <yamamoto.febc@gmail.com>
 LABEL MAINTAINER 'Kazumichi Yamamoto <yamamoto.febc@gmail.com>'
 
-RUN  apt-get update && apt-get -y install \
-        bash \
-        git  \
-        make \
-        zip  \
+RUN  apt-get update && apt-get -y install git \
       && apt-get clean \
       && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
 ADD . /go/src/github.com/rarukas/rarukas
 WORKDIR /go/src/github.com/rarukas/rarukas
 
-RUN ["make", "build-server"]
+RUN CGO_ENABLED=0 go build \
+  -ldflags "-s -w -X github.com/rarukas/rarukas/version.Revision=`git rev-parse --short HEAD`" \
+  -o bin/rarukas-server cmd/rarukas-server/main.go
 
 #----------
 FROM sacloud/packer as packer-sacloud

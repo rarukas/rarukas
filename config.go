@@ -70,7 +70,7 @@ var cliFlags = []cli.Flag{
 	},
 	&cli.StringFlag{
 		Name:        "private-key",
-		Usage:       "Private key for SSH auth. If empty, generate temprary key",
+		Usage:       "Private key for SSH auth. If empty, generate temporary key",
 		EnvVars:     []string{"RARUKAS_PRIVATE_KEY"},
 		Destination: &cfg.privateKey,
 	},
