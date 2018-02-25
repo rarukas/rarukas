@@ -114,27 +114,26 @@ $ rarukas --help
   COMMANDS:
        help, h  Shows a list of commands or help for one command
   
-GLOBAL OPTIONS:
-   --token value                     API Token of Arukas (default: "") [$ARUKAS_JSON_API_TOKEN]
-   --secret value                    API Secret of Arukas (default: "") [$ARUKAS_JSON_API_SECRET]
-   --public-key value                Public key for SSH auth. If empty, generate temporary key [$RARUKAS_PUBLIC_KEY]
-   --private-key value               Private key for SSH auth. If empty, generate temprary key [$RARUKAS_PRIVATE_KEY]
-   --arukas-name value               Name of Arukas app (default: "rarukas-server") [$ARUKAS_NAME]
-   --arukas-plan value               Plan of Arukas app [free/hobby/standard-1/standard-2] (default: "free") [$ARUKAS_PLAN]
-   --image-type value, --type value  OS Type of Rarukas server base image [alpine/centos/ubuntu/ansible/sacloud] (default: "alpine") [$RARUKAS_IMAGE_TYPE]
-   --image-name value                Name of Rarukas server base image. It must exist in DockerHub. Ignore image-type if it was specified [$RARUKAS_IMAGE_NAME]
-   --command-file value, -c value    Script file to run on Arukas [$RARUKAS_COMMAND_FILE]
-   --sync-dir value                  Directory to synchronize Arukas working directory [$RARUKAS_SYNC_DIR]
-   --download-only                   Enable downloading only in synchronization with Arukas working directory (default: false) [$RARUKAS_DOWNLOAD_ONLY]
-   --upload-only                     Enable uploading only in synchronization with Arukas working directory (default: false) [$RARUKAS_UPLOAD_ONLY]
-   --boot-timeout value              Timeout duration when waiting for container be running (default: 10m0s) [$RARUKAS_BOOT_TIMEOUT]
-   --exec-timeout value              Timeout duration when waiting for completion of command execution (default: 1h0m0s) [$RARUKAS_EXEC_TIMEOUT]
-   --help, -h                        show help (default: false)
-   --version, -v                     print the version (default: false)
-
-COPYRIGHT:
+  GLOBAL OPTIONS:
+     --token value                      API Token of Arukas (default: "") [$ARUKAS_JSON_API_TOKEN]
+     --secret value                     API Secret of Arukas (default: "") [$ARUKAS_JSON_API_SECRET]
+     --public-key value                 Public key for SSH auth. If empty, generate temporary key [$RARUKAS_PUBLIC_KEY]
+     --private-key value                Private key for SSH auth. If empty, generate temporary key [$RARUKAS_PRIVATE_KEY]
+     --arukas-name value, --name value  Name of Arukas app (default: "rarukas-server") [$ARUKAS_NAME]
+     --arukas-plan value, --plan value  Plan of Arukas app [free/hobby/standard-1/standard-2] (default: "free") [$ARUKAS_PLAN]
+     --image-type value, --type value   OS Type of Rarukas server base image [alpine/centos/ubuntu/ansible/sacloud] (default: "alpine") [$RARUKAS_IMAGE_TYPE]
+     --image-name value                 Name of Rarukas server base image. It must exist in DockerHub. Ignore image-type if it was specified [$RARUKAS_IMAGE_NAME]
+     --command-file value, -c value     Script file to run on Arukas [$RARUKAS_COMMAND_FILE]
+     --sync-dir value                   Directory to synchronize Arukas working directory [$RARUKAS_SYNC_DIR]
+     --download-only                    Enable downloading only in synchronization with Arukas working directory (default: false) [$RARUKAS_DOWNLOAD_ONLY]
+     --upload-only                      Enable uploading only in synchronization with Arukas working directory (default: false) [$RARUKAS_UPLOAD_ONLY]
+     --boot-timeout value               Timeout duration when waiting for container be running (default: 10m0s) [$RARUKAS_BOOT_TIMEOUT]
+     --exec-timeout value               Timeout duration when waiting for completion of command execution (default: 1h0m0s) [$RARUKAS_EXEC_TIMEOUT]
+     --help, -h                         show help (default: false)
+     --version, -v                      print the version (default: false)
+  
+  COPYRIGHT:
    Copyright (C) 2018 Kazumichi Yamamoto.
-
 ```
 
 ## Advanced Usage

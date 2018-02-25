@@ -36,8 +36,8 @@ tools:
 install:
 	go install
 
-.PHONY: build-all
-build-all: build build-server
+.PHONY: build-release
+release-build: clean build-all build-server
 
 .PHONY: build
 build: bin/rarukas
@@ -47,8 +47,8 @@ bin/rarukas: $(GO_FILES)
 
 build-x: bin/rarukas_$(GOOS)-$(GOARCH)$(SUFFIX)
 
-.PHONY: build-x-all
-build-x-all: $(BUILD_X_TARGETS)
+.PHONY: build-all
+build-all: $(BUILD_X_TARGETS)
 
 build-windows-amd64:
 	$(MAKE) build-x GOOS=windows GOARCH=amd64 SUFFIX=.exe
@@ -73,7 +73,7 @@ bin/rarukas_$(GOOS)-$(GOARCH)$(SUFFIX): $(GO_FILES)
 build-server: bin/rarukas-server
 
 bin/rarukas-server: $(GO_FILES)
-	CGO_ENABLED=0 go build -ldflags $(BUILD_LDFLAGS) -o bin/rarukas-server cmd/rarukas-server/main.go
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags $(BUILD_LDFLAGS) -o bin/rarukas-server cmd/rarukas-server/main.go
 
 .PHONY: docker-build
 docker-build:
