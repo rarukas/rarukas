@@ -1,4 +1,4 @@
-# rarukas (remote-arukas)
+# Rarukas (remote-arukas)
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/rarukas/rarukas)](https://goreportcard.com/report/github.com/rarukas/rarukas)
 [![Build Status](https://travis-ci.org/rarukas/rarukas.svg?branch=master)](https://travis-ci.org/rarukas/rarukas)
