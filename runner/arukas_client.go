@@ -17,10 +17,17 @@ const (
 // RarukasImageTypes is valid types for rarukas-server
 var RarukasImageTypes = []string{
 	"alpine",
-	"centos",
-	"ubuntu",
 	"ansible",
+	"centos",
+	"debian",
+	"golang",
+	"node",
+	"php",
+	"python",
+	"python2",
+	"ruby",
 	"sacloud",
+	"ubuntu",
 }
 
 // ArukasClient is Arukas API Client interface

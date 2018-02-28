@@ -84,6 +84,13 @@ docker-build-server:
 	docker build -f image/alpine/Dockerfile -t rarukas/rarukas-server:alpine .
 	docker build -f image/ansible/Dockerfile -t rarukas/rarukas-server:ansible .
 	docker build -f image/centos/Dockerfile -t rarukas/rarukas-server:centos .
+	docker build -f image/debian/Dockerfile -t rarukas/rarukas-server:debian .
+	docker build -f image/golang/Dockerfile -t rarukas/rarukas-server:golang .
+	docker build -f image/node/Dockerfile -t rarukas/rarukas-server:node .
+	docker build -f image/php/Dockerfile -t rarukas/rarukas-server:php .
+	docker build -f image/python/Dockerfile -t rarukas/rarukas-server:python .
+	docker build -f image/python2/Dockerfile -t rarukas/rarukas-server:python2 .
+	docker build -f image/ruby/Dockerfile -t rarukas/rarukas-server:ruby .
 	docker build -f image/sacloud/Dockerfile -t rarukas/rarukas-server:sacloud .
 	docker build -f image/ubuntu/Dockerfile -t rarukas/rarukas-server:ubuntu .
 

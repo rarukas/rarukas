@@ -9,7 +9,6 @@
 
 ## About 
 
-
 `rarukas` performs the following processes to execute one-off commands on Arukas.
 
 - Generate key-pair for SSH public key authentication  
@@ -44,7 +43,6 @@ For convenience in running `rarukas`, you can export API Keys above as environme
 $ export ARUKAS_JSON_API_TOKEN=<your-api-token>
 $ export ARUKAS_JSON_API_SECRET=<your-api-secret>
 ```
-
 
 ## Usage
 
@@ -112,16 +110,16 @@ $ rarukas --help
      0.0.1, build xxxxxx
   
   COMMANDS:
-       help, h  Shows a list of commands or help for one command
+     help, h  Shows a list of commands or help for one command
   
   GLOBAL OPTIONS:
      --token value                      API Token of Arukas (default: "") [$ARUKAS_JSON_API_TOKEN]
      --secret value                     API Secret of Arukas (default: "") [$ARUKAS_JSON_API_SECRET]
      --public-key value                 Public key for SSH auth. If empty, generate temporary key [$RARUKAS_PUBLIC_KEY]
      --private-key value                Private key for SSH auth. If empty, generate temporary key [$RARUKAS_PRIVATE_KEY]
-     --arukas-name value, --name value  Name of Arukas app (default: "rarukas-server") [$ARUKAS_NAME]
+     --arukas-name value, --name value  Name of Arukas app (default: "rarukas") [$ARUKAS_NAME]
      --arukas-plan value, --plan value  Plan of Arukas app [free/hobby/standard-1/standard-2] (default: "free") [$ARUKAS_PLAN]
-     --image-type value, --type value   OS Type of Rarukas server base image [alpine/centos/ubuntu/ansible/sacloud] (default: "alpine") [$RARUKAS_IMAGE_TYPE]
+     --image-type value, --type value   OS Type of Rarukas server base image [alpine/ansible/centos/debian/golang/node/php/python/python2/ruby/sacloud/ubuntu] (default: "alpine") [$RARUKAS_IMAGE_TYPE]
      --image-name value                 Name of Rarukas server base image. It must exist in DockerHub. Ignore image-type if it was specified [$RARUKAS_IMAGE_NAME]
      --command-file value, -c value     Script file to run on Arukas [$RARUKAS_COMMAND_FILE]
      --sync-dir value                   Directory to synchronize Arukas working directory [$RARUKAS_SYNC_DIR]
@@ -131,9 +129,9 @@ $ rarukas --help
      --exec-timeout value               Timeout duration when waiting for completion of command execution (default: 1h0m0s) [$RARUKAS_EXEC_TIMEOUT]
      --help, -h                         show help (default: false)
      --version, -v                      print the version (default: false)
-  
+   
   COPYRIGHT:
-   Copyright (C) 2018 Kazumichi Yamamoto.
+     Copyright (C) 2018 Kazumichi Yamamoto.
 ```
 
 ## Advanced Usage
@@ -207,7 +205,65 @@ $ rarukas --type sacloud --sync-dir . packer build template.json
 
 ## Using customized Docker image
 
-TODO
+To use custom images with `Rarukas`, you need to build docker image and publish it on DockerHub.
+
+### Using semi-cutomized image
+
+If you want to add packages etc to the image, semi-cutomize is useful.
+
+Create a Dockerfile based on the existing Rarukas image as follows:
+
+```
+# Choose base-image from existing Rarukas image. 
+#   ref: https://hub.docker.com/r/rarukas/rarukas-server/tags/
+FROM rarukas/rarukas-server:alpine 
+
+# Add necessary packages
+RUN apk add --no-cache --update <packages> 
+```
+
+### Using full-cutomized image
+
+If you want to change the base image, you need full-customize.  
+
+You can use any Dockerfile, but be sure to include the following:
+
+```
+# Add rarukas-server binary
+ADD https://github.com/rarukas/rarukas/releases/download/0.0.2/rarukas-server /usr/local/bin/
+RUN chmod +x /usr/local/bin/rarukas-server
+
+# set entrypoint 
+ENTRYPOINT ["/usr/local/bin/rarukas-server"]
+
+# Create and set workdir
+RUN mkdir /workdir
+WORKDIR /workdir
+
+# Expose SSH and HealthCheck port
+EXPOSE 8080
+EXPOSE 2222
+```
+
+### Build and Push image
+
+Next, build docker image and push it to DockerHub as follows:
+
+```bash
+# build docker image
+docker build -t <account/reponame:tag> .
+
+# push to DockerHub
+docker push <account/reponame:tag> 
+```
+
+### Run `rarukas` command with `--image-name` option
+
+To use custom image you created, specify the `--image-name` option.
+
+```bash
+rarukas --image-name <account/reponame:tag> ...
+```
 
 ## License
 
