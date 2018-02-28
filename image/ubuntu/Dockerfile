@@ -10,7 +10,7 @@ RUN  apt-get update && apt-get -y install \
       && apt-get clean \
       && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
-ADD https://github.com/rarukas/rarukas/releases/download/0.0.2/rarukas-server /usr/local/bin/
+ADD https://github.com/rarukas/rarukas/releases/download/0.0.3/rarukas-server /usr/local/bin/
 RUN chmod +x /usr/local/bin/rarukas-server
 ENTRYPOINT ["/usr/local/bin/rarukas-server"]
 
