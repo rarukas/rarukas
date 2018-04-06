@@ -10,7 +10,7 @@ type ServiceListData struct {
 // Service represents service object
 type Service struct {
 	ID            string               `json:"id"`
-	TempID        int32                `json:"temp_id,omitempty"`
+	TempID        int32                `json:"temp-id,omitempty"`
 	Type          string               `json:"type,omitempty"`
 	Attributes    *ServiceAttr         `json:"attributes,omitempty"`
 	Relationships *ServiceRelationship `json:"relationships,omitempty"`
@@ -101,7 +101,7 @@ func (s *Service) PlanID() string {
 
 // ServiceAttr represents service.attributes object
 type ServiceAttr struct {
-	AppID                    string           `json:"app_id,omitempty"`
+	AppID                    string           `json:"app-id,omitempty"`
 	Image                    string           `json:"image"`
 	Command                  string           `json:"command"`
 	Instances                int32            `json:"instances"`
@@ -109,15 +109,15 @@ type ServiceAttr struct {
 	Memory                   int32            `json:"memory,omitempty"`
 	Environment              []*Env           `json:"environment"`
 	Ports                    []*Port          `json:"ports,omitempty"`
-	PortMappings             [][]*PortMapping `json:"port_mappings,omitempty"`
-	CreatedAt                *time.Time       `json:"created_at,omitempty"`
-	UpdatedAt                *time.Time       `json:"updated_at,omitempty"`
+	PortMappings             [][]*PortMapping `json:"port-mappings,omitempty"`
+	CreatedAt                *time.Time       `json:"created-at,omitempty"`
+	UpdatedAt                *time.Time       `json:"updated-at,omitempty"`
 	Status                   string           `json:"status,omitempty"`
 	SubDomain                string           `json:"subdomain,omitempty"`
 	EndPoint                 string           `json:"endpoint,omitempty"`
-	CustomDomains            []*CustomDomain  `json:"custom_domains,omitempty"`
-	LastInstanceFailedAt     *time.Time       `json:"last_instance_failed_at,omitempty"`
-	LastInstanceFailedStatus string           `json:"last_instance_failed_status,omitempty"`
+	CustomDomains            []*CustomDomain  `json:"custom-domains,omitempty"`
+	LastInstanceFailedAt     *time.Time       `json:"last-instance-failed-at,omitempty"`
+	LastInstanceFailedStatus string           `json:"last-instance-failed-status,omitempty"`
 }
 
 // ServiceData represents service data

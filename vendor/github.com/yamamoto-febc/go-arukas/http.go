@@ -172,7 +172,7 @@ func (c *httpClient) do(req *http.Request) ([]byte, error) {
 		fmt.Fprintln(c.traceOut, string(body))
 	}
 
-	if err = checkResponse(res); err != nil {
+	if err = checkResponse(res, body); err != nil {
 		return []byte{}, err
 	}
 
@@ -180,11 +180,15 @@ func (c *httpClient) do(req *http.Request) ([]byte, error) {
 }
 
 // CheckResponse returns an error (of type *Error) if the response.
-func checkResponse(res *http.Response) error {
+func checkResponse(res *http.Response, body []byte) error {
 	if res.StatusCode == 404 {
 		return ErrorNotFound(fmt.Errorf("The resource does not found on the server: %s", res.Request.URL))
 	} else if res.StatusCode >= 400 {
-		return fmt.Errorf("Got realClient status code >= 400: %s", res.Status)
+		msg := string(body)
+		if msg == "" {
+			msg = "(response body is empty)"
+		}
+		return fmt.Errorf("Got HTTP status code %s: %s", res.Status, msg)
 	}
 	return nil
 }

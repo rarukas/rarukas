@@ -9,7 +9,7 @@ const (
 	// TypeServices represents the "services" type
 	TypeServices = "services"
 	// TypeServicePlans represents the "service_plans" type
-	TypeServicePlans = "service_plans"
+	TypeServicePlans = "service-plans"
 	// TypeUsers represents the "users" type
 	TypeUsers = "users"
 	// TypeRegions represents the "regions" type
@@ -47,8 +47,8 @@ var ValidProtocols = []string{"tcp", "udp"}
 type PortMapping struct {
 	Host          string `json:"host"`
 	Protocol      string `json:"protocol"`
-	ContainerPort int32  `json:"container_port"`
-	ServicePort   int32  `json:"service_port"`
+	ContainerPort int32  `json:"container-port"`
+	ServicePort   int32  `json:"service-port"`
 }
 
 // CustomDomain represents custom_domain object

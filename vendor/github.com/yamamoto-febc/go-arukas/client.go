@@ -82,6 +82,8 @@ type Client interface {
 	PowerOff(id string) error
 
 	WaitForState(ctx context.Context, serviceID string, status string) error
+
+	Version() string
 }
 
 // client implements arukas.api interface
@@ -270,4 +272,8 @@ func (c *client) WaitForState(ctx context.Context, serviceID string, status stri
 		return err
 	}
 
+}
+
+func (c *client) Version() string {
+	return Version
 }
