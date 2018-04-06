@@ -8,7 +8,7 @@ type RelationshipData struct {
 // Relationship represents relationship body
 type Relationship struct {
 	ID     string `json:"id,omitempty"`
-	TempID int32  `json:"temp_id,omitempty"`
+	TempID int32  `json:"temp-id,omitempty"`
 	Type   string `json:"type,omitempty"`
 }
 
@@ -21,7 +21,7 @@ type AppRelationship struct {
 // ServiceRelationship represents Service relationship data
 type ServiceRelationship struct {
 	App         *RelationshipData `json:"app,omitempty"`
-	ServicePlan *RelationshipData `json:"service_plan,omitempty"`
+	ServicePlan *RelationshipData `json:"service-plan,omitempty"`
 }
 
 // NewAppRelationship creates new AppRelationship with default values

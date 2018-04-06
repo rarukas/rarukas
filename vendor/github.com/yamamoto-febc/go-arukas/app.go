@@ -47,8 +47,8 @@ func (a *App) ServiceID() string {
 // AppAttr represents app.attributes object
 type AppAttr struct {
 	Name      string     `json:"name,omitempty"`
-	CreatedAt *time.Time `json:"created_at,omitempty"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	CreatedAt *time.Time `json:"created-at,omitempty"`
+	UpdatedAt *time.Time `json:"updated-at,omitempty"`
 }
 
 // AppData represents data object(included app and child service)

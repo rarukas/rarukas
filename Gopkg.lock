@@ -69,8 +69,8 @@
 [[projects]]
   name = "github.com/yamamoto-febc/go-arukas"
   packages = ["."]
-  revision = "cdae7a651bd485f01a5cf4e5dd9c8b00be424e3b"
-  version = "v0.0.3"
+  revision = "c95dedbd56cc832e7f46ec81a798582160f09574"
+  version = "v0.0.6"
 
 [[projects]]
   branch = "master"
@@ -83,7 +83,7 @@
     "poly1305",
     "ssh"
   ]
-  revision = "49796115aa4b964c318aad4f3084fdb41e9aa067"
+  revision = "b2aa35443fbc700ab74c586ae79b81c171851023"
 
 [[projects]]
   branch = "v2"
