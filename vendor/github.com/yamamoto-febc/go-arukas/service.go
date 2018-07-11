@@ -10,7 +10,7 @@ type ServiceListData struct {
 // Service represents service object
 type Service struct {
 	ID            string               `json:"id"`
-	TempID        int32                `json:"temp-id,omitempty"`
+	LinkID        int32                `json:"lid,omitempty"`
 	Type          string               `json:"type,omitempty"`
 	Attributes    *ServiceAttr         `json:"attributes,omitempty"`
 	Relationships *ServiceRelationship `json:"relationships,omitempty"`

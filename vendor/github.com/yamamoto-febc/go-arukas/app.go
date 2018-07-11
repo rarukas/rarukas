@@ -41,7 +41,7 @@ func (a *App) UpdatedAt() *time.Time {
 
 // ServiceID returns service id
 func (a *App) ServiceID() string {
-	return a.Relationships.Service.Data.ID
+	return a.Relationships.Services.Data[0].ID
 }
 
 // AppAttr represents app.attributes object

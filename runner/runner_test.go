@@ -113,10 +113,12 @@ var testArukasApp = &arukas.AppData{
 	Data: &arukas.App{
 		ID: "36EE605D-3351-4549-954E-D9A4FF768C75",
 		Relationships: &arukas.AppRelationship{
-			Service: &arukas.RelationshipData{
-				Data: &arukas.Relationship{
-					ID:   "36EE605D-3351-4549-954E-D9A4FF768C75",
-					Type: arukas.TypeServices,
+			Services: &arukas.RelationshipDataList{
+				Data: []*arukas.Relationship{
+					{
+						ID:   "36EE605D-3351-4549-954E-D9A4FF768C75",
+						Type: arukas.TypeServices,
+					},
 				},
 			},
 		},

@@ -5,20 +5,25 @@ type RelationshipData struct {
 	Data *Relationship `json:"data,omitempty"`
 }
 
+// RelationshipDataList represents relationship data(list)
+type RelationshipDataList struct {
+	Data []*Relationship `json:"data,omitempty"`
+}
+
 // Relationship represents relationship body
 type Relationship struct {
 	ID     string `json:"id,omitempty"`
-	TempID int32  `json:"temp-id,omitempty"`
+	LinkID int32  `json:"lid,omitempty"`
 	Type   string `json:"type,omitempty"`
 }
 
 // AppRelationship represents App relationship data
 type AppRelationship struct {
-	User    *RelationshipData `json:"user,omitempty"`
-	Service *RelationshipData `json:"service,omitempty"`
+	User     *RelationshipData     `json:"user,omitempty"`
+	Services *RelationshipDataList `json:"services,omitempty"`
 }
 
-// ServiceRelationship represents Service relationship data
+// ServiceRelationship represents Services relationship data
 type ServiceRelationship struct {
 	App         *RelationshipData `json:"app,omitempty"`
 	ServicePlan *RelationshipData `json:"service-plan,omitempty"`
@@ -27,10 +32,12 @@ type ServiceRelationship struct {
 // NewAppRelationship creates new AppRelationship with default values
 func NewAppRelationship() *AppRelationship {
 	return &AppRelationship{
-		Service: &RelationshipData{
-			Data: &Relationship{
-				TempID: TempID,
-				Type:   TypeServices,
+		Services: &RelationshipDataList{
+			Data: []*Relationship{
+				{
+					LinkID: LinkID,
+					Type:   TypeServices,
+				},
 			},
 		},
 	}

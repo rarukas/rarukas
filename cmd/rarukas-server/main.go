@@ -109,7 +109,7 @@ func main() {
 }
 
 func cmdNotFound(c *cli.Context, command string) {
-	fmt.Fprintf(
+	fmt.Fprintf( // nolint
 		os.Stderr,
 		"%s: '%s' is not a %s command. See '%s --help'\n",
 		c.App.Name,

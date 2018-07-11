@@ -1,7 +1,7 @@
 package arukas
 
-// TempID used when creating new app/service
-const TempID = 1
+// LinkID used when creating new app/service
+const LinkID = 1
 
 const (
 	// TypeApps represents the "apps" type

@@ -14,11 +14,11 @@ tools:
 	gometalinter --install
 
 .PHONY: testacc
-testacc: lint
+testacc: 
 	TEST_ACC=1 go test ./... $(TESTARGS) -v -timeout=30m -parallel=4 ;
 
 .PHONY: test
-test: lint
+test: 
 	TEST_ACC=  go test ./... $(TESTARGS) -v -timeout=30m -parallel=4 ;
 
 .PHONY: lint
