@@ -165,21 +165,21 @@ func sessionHandler(strCmd string) ssh.Handler {
 
 			in, err = cmd.StdinPipe()
 			if err != nil {
-				fmt.Fprint(s.Stderr(), err)
+				fmt.Fprint(s.Stderr(), err) // nolint
 				close()
 				return
 			}
 
 			out, err = cmd.StdoutPipe()
 			if err != nil {
-				fmt.Fprint(s.Stderr(), err)
+				fmt.Fprint(s.Stderr(), err) // nolint
 				close()
 				return
 			}
 
 			errOut, err = cmd.StderrPipe()
 			if err != nil {
-				fmt.Fprint(s.Stderr(), err)
+				fmt.Fprint(s.Stderr(), err) // nolint
 				close()
 				return
 			}
@@ -188,7 +188,7 @@ func sessionHandler(strCmd string) ssh.Handler {
 			s.Signals(sigChan)
 			err = cmd.Start()
 			if err != nil {
-				fmt.Fprint(s.Stderr(), err)
+				fmt.Fprint(s.Stderr(), err) // nolint
 				close()
 				return
 			}
