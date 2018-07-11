@@ -167,7 +167,7 @@ func (p *RequestParam) ToAppData() *AppData {
 		Included: []interface{}{
 			&Service{
 				Type:   TypeServices,
-				TempID: TempID,
+				LinkID: LinkID,
 				Attributes: &ServiceAttr{
 					Command:       p.Command,
 					CustomDomains: CustomDomains(p.CustomDomains...),

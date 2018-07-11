@@ -45,14 +45,14 @@
 [[projects]]
   name = "github.com/kr/pty"
   packages = ["."]
-  revision = "282ce0e5322c82529687d609ee670fac7c7d917c"
-  version = "v1.1.1"
+  revision = "fa756f09eeb418bf1cc6268c66ceaad9bb98f598"
+  version = "v1.1.2"
 
 [[projects]]
   branch = "master"
   name = "github.com/mitchellh/go-homedir"
   packages = ["."]
-  revision = "b8bc1bf767474819792c23f32d8286a45736f1c6"
+  revision = "3864e76763d94a6df2f9960b16a20a33da9f9a66"
 
 [[projects]]
   name = "github.com/pmezard/go-difflib"
@@ -63,14 +63,14 @@
 [[projects]]
   name = "github.com/stretchr/testify"
   packages = ["assert"]
-  revision = "12b6f73e6084dad08a7c6e575284b177ecafbc71"
-  version = "v1.2.1"
+  revision = "f35b8ab0b5a2cef36673838d662e249dd9c94686"
+  version = "v1.2.2"
 
 [[projects]]
   name = "github.com/yamamoto-febc/go-arukas"
   packages = ["."]
-  revision = "c95dedbd56cc832e7f46ec81a798582160f09574"
-  version = "v0.0.6"
+  revision = "94764131bde118cde3e3dce327ebfe5c6bee6bb6"
+  version = "v0.0.7"
 
 [[projects]]
   branch = "master"
@@ -80,10 +80,11 @@
     "ed25519",
     "ed25519/internal/edwards25519",
     "internal/chacha20",
+    "internal/subtle",
     "poly1305",
     "ssh"
   ]
-  revision = "b2aa35443fbc700ab74c586ae79b81c171851023"
+  revision = "a49355c7e3f8fe157a85be2f77e6e269a0f89602"
 
 [[projects]]
   branch = "v2"
