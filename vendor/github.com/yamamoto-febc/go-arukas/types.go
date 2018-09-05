@@ -1,5 +1,11 @@
 package arukas
 
+import (
+	"encoding/json"
+	"strconv"
+	"strings"
+)
+
 // LinkID used when creating new app/service
 const LinkID = 1
 
@@ -38,6 +44,82 @@ type Port struct {
 	// Number is port number that container exposes.
 	// Valid value range is [1 - 65535]
 	Number int32 `json:"number"`
+}
+
+// Ports is a slice of Ports. A service can have multiple ports.
+type Ports []*Port
+type oldPortFormat Ports
+type newPortFormat []string
+
+func (pf newPortFormat) toPorts() (Ports, error) {
+	ports := make(Ports, 0)
+	for _, p := range pf {
+		var (
+			parsedPort *Port
+			err        error
+		)
+		if parsedPort, err = parseNewPortFormat(p); err != nil {
+			return nil, err
+		}
+
+		ports = append(ports, parsedPort)
+	}
+
+	return ports, nil
+}
+
+func (pf oldPortFormat) toPorts() (Ports, error) {
+	ports := make(Ports, 0)
+	for _, p := range pf {
+		ports = append(ports,
+			&Port{
+				Protocol: p.Protocol,
+				Number:   p.Number,
+			},
+		)
+	}
+	return ports, nil
+}
+
+func parseNewPortFormat(str string) (*Port, error) {
+	var protocol string
+	var parsedInt int64
+	var number int32
+	var err error
+	splitted := strings.Split(str, "/")
+	if len(splitted) <= 1 {
+		protocol = "tcp"
+	} else {
+		protocol = splitted[1]
+	}
+
+	if parsedInt, err = strconv.ParseInt(splitted[0], 10, 32); err != nil {
+		return nil, err
+	}
+	number = int32(parsedInt)
+
+	return &Port{Protocol: protocol, Number: number}, nil
+}
+
+// UnmarshalJSON parses ports in both old and new port format and convert them to Port.
+func (ports *Ports) UnmarshalJSON(data []byte) error {
+	op := new(oldPortFormat)
+	np := new(newPortFormat)
+	var err error
+	if err = json.Unmarshal(data, op); err != nil {
+		// Attempt parse as new format
+		if err = json.Unmarshal(data, np); err != nil {
+			return err
+		}
+		if *ports, err = np.toPorts(); err != nil {
+			return err
+		}
+	} else {
+		if *ports, err = op.toPorts(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 // ValidProtocols is a list of valid protocol

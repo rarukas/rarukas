@@ -96,7 +96,7 @@ func (c *httpClient) newRequest(method, path string, body interface{}) (*http.Re
 	requestURL := *c.apiBaseURL // shallow copy
 	requestURL.Path += path
 	if c.trace {
-		fmt.Fprintf(c.traceOut, "Requesting: %s %s %s\n", method, requestURL.String(), rbody)
+		fmt.Fprintf(c.traceOut, "Requesting: %s %s %s\n", method, requestURL.String(), rbody) // nolint
 	}
 	req, err := http.NewRequest(method, requestURL.String(), rbody)
 	if err != nil {
@@ -123,7 +123,7 @@ func (c *httpClient) doRequest(method, path string, body interface{}) ([]byte, e
 		}
 
 		if c.trace {
-			fmt.Fprintln(c.traceOut, "json: ", string(marshaled))
+			fmt.Fprintln(c.traceOut, "json: ", string(marshaled)) // nolint
 		}
 		body = marshaled
 	}
@@ -134,7 +134,7 @@ func (c *httpClient) doRequest(method, path string, body interface{}) ([]byte, e
 	}
 
 	if c.trace {
-		fmt.Fprintf(c.traceOut, "RequestHeader: %#v", req.Header)
+		fmt.Fprintf(c.traceOut, "RequestHeader: %#v", req.Header) // nolint
 	}
 
 	return c.do(req)
@@ -158,7 +158,7 @@ func (c *httpClient) do(req *http.Request) ([]byte, error) {
 	}
 
 	if c.trace {
-		fmt.Fprintln(c.traceOut, "Status:", res.StatusCode)
+		fmt.Fprintln(c.traceOut, "Status:", res.StatusCode) // nolint
 		headers := make([]string, len(res.Header))
 		for k := range res.Header {
 			headers = append(headers, k)
@@ -166,10 +166,10 @@ func (c *httpClient) do(req *http.Request) ([]byte, error) {
 		sort.Strings(headers)
 		for _, k := range headers {
 			if k != "" {
-				fmt.Fprintln(c.traceOut, k+":", strings.Join(res.Header[k], " "))
+				fmt.Fprintln(c.traceOut, k+":", strings.Join(res.Header[k], " ")) // nolint
 			}
 		}
-		fmt.Fprintln(c.traceOut, string(body))
+		fmt.Fprintln(c.traceOut, string(body)) // nolint
 	}
 
 	if err = checkResponse(res, body); err != nil {
