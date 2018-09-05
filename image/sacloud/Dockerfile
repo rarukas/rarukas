@@ -28,7 +28,7 @@ COPY --from=terraform /bin/terraform-provider-sakuracloud* /bin/
 # Usacloud
 COPY --from=usacloud /bin/usacloud /bin/
 
-ADD https://github.com/rarukas/rarukas/releases/download/0.0.4/rarukas-server /usr/local/bin/
+ADD https://github.com/rarukas/rarukas/releases/download/0.1.0/rarukas-server /usr/local/bin/
 RUN chmod +x /usr/local/bin/rarukas-server
 ENTRYPOINT ["/usr/local/bin/rarukas-server"]
 
