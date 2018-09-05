@@ -108,7 +108,7 @@ type ServiceAttr struct {
 	CPUs                     float32          `json:"cups,omitempty"`
 	Memory                   int32            `json:"memory,omitempty"`
 	Environment              []*Env           `json:"environment"`
-	Ports                    []*Port          `json:"ports,omitempty"`
+	Ports                    Ports            `json:"ports,omitempty"`
 	PortMappings             [][]*PortMapping `json:"port-mappings,omitempty"`
 	CreatedAt                *time.Time       `json:"created-at,omitempty"`
 	UpdatedAt                *time.Time       `json:"updated-at,omitempty"`
